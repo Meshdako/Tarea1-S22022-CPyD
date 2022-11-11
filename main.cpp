@@ -1,31 +1,33 @@
 #include <omp.h>
-#include <stdio.h>
-#include <stdlib.h>
-#define NUM_THREADS 3
+#include <iostream>
+#include <iomanip>
 
-static long steps = 1000000000;
+
+using namespace std;
+#define MAX_THREADS 8   // Num hilos
+static long num_steps = 1000000000; // Num Rectangulos (Precision PI)
 double step;
 
-int main(int argc, const char* argv[]) {
 
-	double pi = 0.0;
-	double start, delta, sum[NUM_THREADS];
-	start = omp_get_wtime();
-	step = 1.0 / (double)steps;
-	omp_set_num_threads(NUM_THREADS);
-#pragma omp parallel
-	{
-		double x;
-		int id, i;
-		id = omp_get_thread_num();
-		for (i = id, sum[id] = 0.0; i < steps; i = i + NUM_THREADS) {
-			x = (i + 0.5) * step;
-			sum[id] += 4.0 / (1.0 + x * x);
-		}
-	}
-	for (int i = 0; i < NUM_THREADS; i++) {
-		pi += sum[i] * step;
-	}
-	delta = omp_get_wtime() - start;
-	printf("PI = %.16g computed in %.4g seconds with %d threads.", pi, delta, NUM_THREADS);
+int main() {
+    int i;
+    double x,pi,sum=0.0;  // iniciando variables
+    double start, delta;
+
+    step = 1.0/(double) num_steps;
+    // Define el tamaño de la base de los rectangulos
+    omp_set_num_threads(MAX_THREADS); // Define Num Hilos
+   start = omp_get_wtime(); // Variable para calculo tiempo Ejecucion
+
+    #pragma omp parallel for reduction(+:sum) private(x) // paralelizacion for
+    for ( i = 0; i < num_steps; i++)
+    {
+        x = (i+0.5)*step;              //Valor de x para f(x), el cual sera la mitad de la base de cada rectangulo
+        sum = sum + 4.0/(1.0+x*x);    // Calculo de la altura de cada rectangulo
+    }
+    pi= step*sum;    // Base * Altura (Total)
+    delta = omp_get_wtime() - start;  //Tiempo de termino ejecución
+    std::cout << std::setprecision(14); // Num decimales
+    cout <<"Valor PI:"<<pi<<", Tiempo Ejecucion:"<<delta<<", Num Threads: "<<MAX_THREADS;
+    return 0;
 }
