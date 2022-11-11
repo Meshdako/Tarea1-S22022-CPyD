@@ -5,3 +5,4 @@
 * Renato Palominos Concha
 * Martín Sobarzo Huerta
 * Cristóbal Abarca Abarzúa
+* Matías Álvarez Castillo
