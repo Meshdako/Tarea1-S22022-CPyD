@@ -12,7 +12,7 @@ double step;
 int main() {
     int i;
     double x,pi,sum=0.0;  // iniciando variables
-    double start, delta;
+    double start, delta; // Variables para almacenar tiempo de ejecucion
 
     step = 1.0/(double) num_steps;
     // Define el tamaño de la base de los rectangulos
