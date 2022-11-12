@@ -1,3 +1,14 @@
+/**
+ * Grupo 01
+ * Martín Sobarzo
+ * Matías Álvarez
+ * Rentao Palominos
+ * Cristóbal Abarca
+ * Rodrigo Ubilla
+ * 
+ * Computación Paralela y Distribuida
+*/
+
 #include <omp.h>
 #include <iostream>
 #include <iomanip>
@@ -12,25 +23,29 @@ int main() {
     int i;
     double x,pi,sum=0.0;  // iniciando variables
     double start, delta; // Variables para almacenar tiempo de ejecucion
+    
     cout << "Ingrese Numero de Hilos:"<<endl;
     cin >> MAX_THREADS;
     cout << "Ingrese Numero de Rectangulos (Precision):"<<endl;
     cin >> num_steps;
 
     step = 1.0/(double) num_steps;
+    
     // Define el tamaño de la base de los rectangulos
     omp_set_num_threads(MAX_THREADS); // Define Num Hilos
-   start = omp_get_wtime(); // Variable para calculo tiempo Ejecucion
+    start = omp_get_wtime(); // Variable para calculo tiempo Ejecucion
 
     #pragma omp parallel for reduction(+:sum) private(x) // paralelizacion for
-    for ( i = 0; i < num_steps; i++)
-    {
+    for ( i = 0; i < num_steps; i++){
         x = (i+0.5)*step;              //Valor de x para f(x), el cual sera la mitad de la base de cada rectangulo
         sum = sum + 4.0/(1.0+x*x);    // Calculo de la altura de cada rectangulo
     }
+
     pi= step*sum;    // Base * Altura (Total)
     delta = omp_get_wtime() - start;  //Tiempo de termino ejecución
-    std::cout << std::setprecision(14); // Num decimales
-    cout <<"Valor PI:"<<pi<<", Tiempo Ejecucion:"<<delta<<", Num Threads: "<<MAX_THREADS;
+
+    cout << setprecision(14); // Num decimales
+    cout << "Valor PI: "<< pi <<", Tiempo Ejecucion:" << delta << ", Num Threads: " << MAX_THREADS << endl;
+    cout << "Valor PI: 3.1415926535897 (REAL)" << endl;
     return 0;
 }
