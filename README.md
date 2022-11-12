@@ -19,7 +19,10 @@ $ cd Tarea2-CPyD
 ```
 
 ### Modo de uso:
-
-PENDIENTE
+```
+g++ -fopenmp main.cpp -o main
+./main.exe
+```
+Una vez ejecutado, ingresar cantidad de hilos a utilizar y la precisión requerida.
 
 # Muchas gracias.
