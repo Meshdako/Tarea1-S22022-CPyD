@@ -23,18 +23,18 @@ double step;
 
 int main() {
     int i;
-    double x,pi,sum=0.0;  // iniciando variables
-    double start, delta; // Variables para almacenar tiempo de ejecucion
+    double PI;  // iniciando variables
+    double TiempoFinal;
     
     cout << "Ingrese Numero de Hilos:"<<endl;
     cin >> MAX_THREADS;
     cout << "Ingrese Numero de Rectangulos (Precision):"<<endl;
     cin >> num_steps;
 
-    delta = CalculoPI(MAX_THREADS, num_steps, step, pi);
+    TiempoFinal = CalculoPI(MAX_THREADS, num_steps, step, PI);
 
     cout << setprecision(14); // Num decimales
-    cout << "Valor PI: "<< pi <<", Tiempo Ejecucion:" << delta << ", Num Threads: " << MAX_THREADS << endl;
+    cout << "Valor PI: "<< PI <<", Tiempo Ejecucion:" << TiempoFinal << ", Num Threads: " << MAX_THREADS << endl;
     cout << "Valor PI: 3.1415926535897 (REAL)" << endl;
     return 0;
 }

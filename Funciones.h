@@ -5,6 +5,6 @@
 #include <omp.h>
 #include <iomanip>
 
-int CalculoPI(int num_steps, double step);
+double CalculoPI(int MAX_THREADS, long num_steps, double step, double &pi);
 
 #endif  //FUNCIONES_H

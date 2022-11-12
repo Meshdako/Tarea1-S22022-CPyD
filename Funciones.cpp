@@ -1,6 +1,6 @@
 #include "Funciones.h"
 
-int CalculoPI(int MAX_THREADS, long num_steps, double step, double &pi)
+double CalculoPI(int MAX_THREADS, long num_steps, double step, double &pi)
 {
     // iniciando variables
     double x, sum=0.0;  
