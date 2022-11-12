@@ -17,8 +17,8 @@
 #include "Funciones.cpp"
 
 using namespace std;
-int MAX_THREADS ;   // Num hilos
-static long num_steps; // Num Rectangulos (Precision PI)
+int HILOS ;   // Num hilos
+static long nsteps; // Num Rectangulos (Precision PI)
 double step;
 
 int main() {
@@ -27,14 +27,14 @@ int main() {
     double TiempoFinal;
     
     cout << "Ingrese Numero de Hilos:"<<endl;
-    cin >> MAX_THREADS;
+    cin >> HILOS;
     cout << "Ingrese Numero de Rectangulos (Precision):"<<endl;
-    cin >> num_steps;
+    cin >> nsteps;
 
-    TiempoFinal = CalculoPI(MAX_THREADS, num_steps, step, PI);
+    TiempoFinal = CalculoPI(HILOS, nsteps, step, PI);
 
     cout << setprecision(14); // Num decimales
-    cout << "Valor PI: "<< PI <<", Tiempo Ejecucion:" << TiempoFinal << ", Num Threads: " << MAX_THREADS << endl;
+    cout << "Valor PI: "<< PI <<", Tiempo Ejecucion:" << TiempoFinal << ", Num Threads: " << HILOS << endl;
     cout << "Valor PI: 3.1415926535897 (REAL)" << endl;
     return 0;
 }
