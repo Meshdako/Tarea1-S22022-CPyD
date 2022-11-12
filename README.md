@@ -15,7 +15,7 @@ Debe seguir los siguientes pasos para ejecutar el programa.
 ```
 $ cd *Mi_Carpeta_de_Repositorios*
 $ git clone https://github.com/Meshdako/Tarea2-S22022-CPyD.git
-$ cd Tarea2-S2022-CPyD
+$ cd Tarea2-S22022-CPyD
 ```
 
 ### Modo de uso:
