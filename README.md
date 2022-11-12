@@ -1,5 +1,5 @@
 # Tarea2-S22022-CPyD
-![Image_text](/app/static/img/Logo_UTEM.jpg)
+![Image_text](/Logo_UTEM.jpg)
 Tarea para la asignatura de Computación Paralela y Distribuida. Grupo 1.
 ## Integrantes:
 * Rodrigo Ubilla Castro
