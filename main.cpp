@@ -2,10 +2,9 @@
 #include <iostream>
 #include <iomanip>
 
-
 using namespace std;
-#define MAX_THREADS 8   // Num hilos
-static long num_steps = 1000000000; // Num Rectangulos (Precision PI)
+int MAX_THREADS ;   // Num hilos
+static long num_steps; // Num Rectangulos (Precision PI)
 double step;
 
 
@@ -13,6 +12,10 @@ int main() {
     int i;
     double x,pi,sum=0.0;  // iniciando variables
     double start, delta; // Variables para almacenar tiempo de ejecucion
+    cout << "Ingrese Numero de Hilos:"<<endl;
+    cin >> MAX_THREADS;
+    cout << "Ingrese Numero de Rectangulos (Precision):"<<endl;
+    cin >> num_steps;
 
     step = 1.0/(double) num_steps;
     // Define el tamaño de la base de los rectangulos
